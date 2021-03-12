@@ -1,10 +1,10 @@
-import React from "react";
-import BasicContainer from "./BasicContainer"
+import React, { useEffect } from "react";
+import PageTitle from "./PageTitle"
 import "../stylesheets/main.css";
 
 function About() {
-  return (
-    <BasicContainer>
+ return (
+    <PageTitle title ="About">
  <h2>About Us</h2>
       <p className="lead text-muted">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
@@ -26,10 +26,8 @@ function About() {
         nobis provident quo dolorum sapiente temporibus facere non repellendus
         consequatur cupiditate!
       </p>
-    
-    </BasicContainer>
-     
-  );
+    </PageTitle>
+    );
 }
 
 export default About;

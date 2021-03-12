@@ -1,10 +1,10 @@
 import React from "react";
-import BasicContainer from './BasicContainer'
+import PageTitle from './PageTitle'
 import "../stylesheets/main.css";
 
 function Mainpage() {
   return (
-    <BasicContainer wide={true}>
+    <PageTitle title="Home" wide={true}>
       <div className="container py-md-5">
         <div className="row align-items-center">
           <div className="col-lg-7 py-3 py-md-5">
@@ -66,7 +66,7 @@ function Mainpage() {
           </div>
         </div>
       </div>
-    </BasicContainer>
+    </PageTitle>
   );
 }
 

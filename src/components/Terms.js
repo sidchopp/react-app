@@ -1,9 +1,9 @@
 import React from "react";
-import BasicContainer from "./BasicContainer"
+import PageTitle from "./PageTitle";
 
 function Terms() {
   return (
-    <BasicContainer>
+    <PageTitle title="Terms & Conditions">
      <h2>Our Terms &amp; Conditions</h2>
         <p className="lead text-muted">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
@@ -33,7 +33,7 @@ function Terms() {
           aspernatur aliquam nisi sed harum laborum, nemo odio animi officia
           quisquam. Veniam, natus reprehenderit.
         </p>
-     </BasicContainer>
+    </PageTitle>
         );
 }
 
