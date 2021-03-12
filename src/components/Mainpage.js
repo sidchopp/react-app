@@ -1,9 +1,10 @@
 import React from "react";
+import BasicContainer from './BasicContainer'
 import "../stylesheets/main.css";
 
 function Mainpage() {
   return (
-    <>
+    <BasicContainer wide={true}>
       <div className="container py-md-5">
         <div className="row align-items-center">
           <div className="col-lg-7 py-3 py-md-5">
@@ -65,7 +66,7 @@ function Mainpage() {
           </div>
         </div>
       </div>
-    </>
+    </BasicContainer>
   );
 }
 
