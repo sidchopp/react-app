@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import PageTitle from './PageTitle'
+import Axios from 'axios';
 import "../stylesheets/main.css";
 
 function Mainpage() {
+  const [username, setUsername] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  // e or event contains the info about the event that takes place
+  // We also add an event listerner to each of the input fields in return statement below (a user fill up):
+  // we add an attribute "onChange" equals to a function. So everytime the input changes, this function is going to run
+  //and update the values that are stored in state. So now we always have the latest values( ie what a user types) in state
+  async function handleSubmit(e) {
+    e.preventDefault()
+    try {
+      // to send a post req to our backend server. 1st arg is the address where we want to send this req
+      // 2nd arg is the data that we want to send(which is the user input in this case)
+      await Axios.post('http://localhost:8080/register', { username, email, password })
+      console.log(`User was successfully created`)
+      //for microsoft edge browser we have to use catch(e). For rest it's just catch
+    } catch {
+      console.log(`There was some error`)
+    }
+  }
   return (
     <PageTitle title="Home" wide={true}>
       <div className="container py-md-5">
@@ -17,12 +38,12 @@ function Mainpage() {
             </p>
           </div>
           <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="username-register" className="text-muted mb-1">
                   <small>Username</small>
                 </label>
-                <input
+                <input onChange={e => setUsername(e.target.value)}
                   id="username-register"
                   name="username"
                   className="form-control"
@@ -35,7 +56,7 @@ function Mainpage() {
                 <label htmlFor="email-register" className="text-muted mb-1">
                   <small>Email</small>
                 </label>
-                <input
+                <input onChange={e => setEmail(e.target.value)}
                   id="email-register"
                   name="email"
                   className="form-control"
@@ -48,7 +69,7 @@ function Mainpage() {
                 <label htmlFor="password-register" className="text-muted mb-1">
                   <small>Password</small>
                 </label>
-                <input
+                <input onChange={e => setPassword(e.target.value)}
                   id="password-register"
                   name="password"
                   className="form-control"
@@ -71,3 +92,6 @@ function Mainpage() {
 }
 
 export default Mainpage;
+
+// To response to the event of this form being submitted ie to respond to the submit event:
+// In <Form> Tag we give it an attribute of "onSubmit" which equals a function say handleSubmit
