@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "../stylesheets/main.css";
 
 function Footer() {
@@ -16,23 +17,23 @@ function Footer() {
     <>
       <footer className="border-top text-center small text-muted py-3">
         <p>
-          <a href="/" className="mx-1">
+          <Link to="/" className="mx-1">
             Home
-          </a>{" "}
+          </Link>{" "}
           |{" "}
-          <a className="mx-1" href="/about-us">
+          <Link className="mx-1" to="/about-us">
             About Us
-          </a>{" "}
+          </Link>{" "}
           |{" "}
-          <a className="mx-1" href="/terms">
+          <Link className="mx-1" to="/terms">
             Terms
-          </a>
+          </Link>
         </p>
         <p className="m-0">
           Copyright &copy; {new Date().getFullYear()}.
-          <a href="/" className="text-muted">
-            ComplexApp
-          </a>
+          <Link to="/" className="text-muted">
+            Sid-App
+          </Link>
           . All rights reserved.
         </p>
         <h7>Hope you are enjoying {days[new Date().getDay()]}</h7>
