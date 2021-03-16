@@ -5,7 +5,7 @@ function HeaderLoggedIn(props) {
 function handleLogout() {
   // Here We are leveraging the prop defined in the child component HeaderLoggedIn (inside parent component of Menubar)
   props.setLoggedIn(false);
-  // to use local storgae of the browser
+  // to use local storgae of the browser to remove the info of user,as well, when Sign out button is clicked
   localStorage.removeItem("reactAppToken");
   localStorage.removeItem("reactAppUsername");
   localStorage.removeItem("reactAppAvatar");
@@ -23,7 +23,7 @@ function handleLogout() {
       <a href="#" className="mr-2">
         <img
           className="small-header-avatar"
-          src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128"
+          src={localStorage.getItem("reactAppAvatar")}
         />
       </a>
       <a className="btn btn-sm btn-success mr-2" href="/create-post">
@@ -39,4 +39,4 @@ function handleLogout() {
 export default HeaderLoggedIn;
 
 //When user clicks on signed out button, it will set the loggedIn piece of state to FALSE ie it will lead us back to HeaderLoggedOut
-
+// Inside image element, in src attribute we are using the image that is stored in the local storage of the browser
