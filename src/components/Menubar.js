@@ -6,7 +6,9 @@ import HeaderLoggedOut from "./HeaderLoggedOut";
 
 function Menubar() {
   // to show different header/menubar based on whether the user is logged in or out
-  const [loggedIn, setLoggedIn] = useState()
+  //If something is stored in local storage of browser, we set the initial value of our state to be true, otherwise false
+  //SO now even if we refresh the page after loggin in, our App remembers that we are logged In
+  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("reactAppToken")))
   return (
     <>
       <header className="header-bar bg-primary mb-3">
