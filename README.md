@@ -1,3 +1,11 @@
+# ABOUT react-app:
+
+This project is a part of excercise I am doing while following a tutorial on Udemy.com. The tutorial's name is "React for the REST of us"  by one of my favorite instructors on Udemy- "Brad Schiff". I am using his html/CSS snippets for learning this course. So all the good things in this project are due to Brad and all the bad things happened when I didn't listen to his advice.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
