@@ -36,7 +36,7 @@ function Footer() {
           </Link>
           . All rights reserved.
         </p>
-        <h7>Hope you are enjoying {days[new Date().getDay()]}</h7>
+        <p>Hope you are enjoying {days[new Date().getDay()]}</p>
       </footer>
     </>
   );

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import '../stylesheets/main.css'
+import HeaderLoggedIn from "./HeaderLoggedIn";
+import HeaderLoggedOut from "./HeaderLoggedOut";
 
 function Menubar() {
+  // to show different header/menubar based on whether the user is logged in or out
+  const [loggedIn, setLoggedIn] = useState()
   return (
     <>
       <header className="header-bar bg-primary mb-3">
@@ -12,19 +16,7 @@ function Menubar() {
               Sid App
           </Link>
           </h4>
-          <form className="mb-0 pt-2 pt-md-0">
-            <div className="row align-items-center">
-              <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-                <input name="username" className="form-control form-control-sm input-dark" type="text" placeholder="Username" autoComplete="off" />
-              </div>
-              <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-                <input name="password" className="form-control form-control-sm input-dark" type="password" placeholder="Password" />
-              </div>
-              <div className="col-md-auto">
-                <button className="btn btn-success btn-sm">Sign In</button>
-              </div>
-            </div>
-          </form>
+          {loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut setLoggedIn={setLoggedIn} />}
         </div>
       </header>
 
@@ -33,3 +25,9 @@ function Menubar() {
 }
 
 export default Menubar;
+
+//  {loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />} is a ternary operator as we are doing something conditionally:
+// if loggedIn(ie username/password combo) is true, the menubar displays HeaderLoggedIn component otherwise displays HeaderLoggedOut component.
+// To make that happen we need to keep track of the piece of state within the Menu bar,hence used useState
+// To access that piece of state in HeaderLoggedOut component, we pass a prop of setLoggedIn to it.
+//Remember {setLoggedIn} represents the value of the prop setLoggedIn
