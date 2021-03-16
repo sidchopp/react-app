@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function HeaderLoggedIn() {
+function HeaderLoggedIn(props) {
   return (
     <div className="flex-row my-3 my-md-0">
       <a href="#" className="text-white mr-2 header-search-icon">
@@ -19,9 +19,12 @@ function HeaderLoggedIn() {
       <a className="btn btn-sm btn-success mr-2" href="/create-post">
         Create Post
       </a>
-      <button className="btn btn-sm btn-secondary">Sign Out</button>
+      <button onClick ={() => props.setLoggedIn(false) } className="btn btn-sm btn-secondary">Sign Out</button>
     </div>
   );
 }
 
 export default HeaderLoggedIn;
+
+//When user clicks on signed out button, it will set the loggedIn piece of state to FALSE ie it will lead us back to HeaderLoggedOut
+// Here We are leveraging the prop defined in the child component HeaderLoggedIn (inside parent component of Menubar) 

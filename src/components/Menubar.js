@@ -16,7 +16,7 @@ function Menubar() {
               Sid App
           </Link>
           </h4>
-          {loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut setLoggedIn={setLoggedIn} />}
+          {loggedIn ? <HeaderLoggedIn setLoggedIn={setLoggedIn} /> : <HeaderLoggedOut setLoggedIn={setLoggedIn} />}
         </div>
       </header>
 
@@ -31,3 +31,5 @@ export default Menubar;
 // To make that happen we need to keep track of the piece of state within the Menu bar,hence used useState
 // To access that piece of state in HeaderLoggedOut component, we pass a prop of setLoggedIn to it.
 //Remember {setLoggedIn} represents the value of the prop setLoggedIn
+
+// We do similar things for HeaderLoggedIn component.
