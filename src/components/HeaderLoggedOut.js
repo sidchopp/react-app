@@ -19,9 +19,9 @@ function HeaderLoggedOut(props) {
         // to store the data coming as response inside the local storage of the browser,
         // so that when we refresh the page the entered/displayed data stays there in the browser
         //1st arg is the name we assign to this data and 2nd is what data we want to store
-        localStorage.setItem("reactAppToken", response.data);
-        localStorage.setItem("reactAppUsername", response.username);
-        localStorage.setItem("reactAppAvatar", response.avatar);
+        localStorage.setItem("reactAppToken", response.data.token);
+        localStorage.setItem("reactAppUsername", response.data.username);
+        localStorage.setItem("reactAppAvatar", response.data.avatar);
         // to leverage setLoggedIn prop, defined in HeaderLoggedOut component, we use the props here
         props.setLoggedIn(true);
       } else {

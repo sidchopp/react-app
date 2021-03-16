@@ -4,11 +4,8 @@ import '../stylesheets/main.css'
 import HeaderLoggedIn from "./HeaderLoggedIn";
 import HeaderLoggedOut from "./HeaderLoggedOut";
 
-function Menubar() {
-  // to show different header/menubar based on whether the user is logged in or out
-  //If something is stored in local storage of browser, we set the initial value of our state to be true, otherwise false
-  //SO now even if we refresh the page after loggin in, our App remembers that we are logged In
-  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("reactAppToken")))
+function Menubar(props) {
+
   return (
     <>
       <header className="header-bar bg-primary mb-3">
@@ -18,7 +15,7 @@ function Menubar() {
               Sid App
           </Link>
           </h4>
-          {loggedIn ? <HeaderLoggedIn setLoggedIn={setLoggedIn} /> : <HeaderLoggedOut setLoggedIn={setLoggedIn} />}
+          {props.loggedIn ? <HeaderLoggedIn setLoggedIn={props.setLoggedIn} /> : <HeaderLoggedOut setLoggedIn={props.setLoggedIn} />}
         </div>
       </header>
 
@@ -30,8 +27,6 @@ export default Menubar;
 
 //  {loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />} is a ternary operator as we are doing something conditionally:
 // if loggedIn(ie username/password combo) is true, the menubar displays HeaderLoggedIn component otherwise displays HeaderLoggedOut component.
-// To make that happen we need to keep track of the piece of state within the Menu bar,hence used useState
-// To access that piece of state in HeaderLoggedOut component, we pass a prop of setLoggedIn to it.
-//Remember {setLoggedIn} represents the value of the prop setLoggedIn
+// Since we are accessing the state (loggedIn and setLoggedIn) from Menubar component, so we are using props here, 
+//so the "values" of loggedIn and setLoggedIn are coming from props
 
-// We do similar things for HeaderLoggedIn component.
