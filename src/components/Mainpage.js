@@ -17,7 +17,7 @@ function Mainpage() {
     try {
       // to send a post req to our backend server. 1st arg is the address where we want to send this req
       // 2nd arg is the data that we want to send(which is the user input in this case)
-      await Axios.post('http://localhost:8080/register', { username, email, password })
+      await Axios.post('/register', { username, email, password })
       console.log(`User was successfully created`)
       //for microsoft edge browser we have to use catch(e). For rest it's just catch
     } catch {

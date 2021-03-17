@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import '../stylesheets/main.css'
 import HeaderLoggedIn from "./HeaderLoggedIn";
@@ -27,6 +27,6 @@ export default Menubar;
 
 //  {loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />} is a ternary operator as we are doing something conditionally:
 // if loggedIn(ie username/password combo) is true, the menubar displays HeaderLoggedIn component otherwise displays HeaderLoggedOut component.
-// Since we are accessing the state (loggedIn and setLoggedIn) from Menubar component, so we are using props here, 
+// Since we are accessing the state (loggedIn and setLoggedIn) which are defined in App.js, from Menubar component, so we are using props here, 
 //so the "values" of loggedIn and setLoggedIn are coming from props
 
