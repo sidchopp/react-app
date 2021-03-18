@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "./PageTitle";
 import Axios from "axios";
+import {withRouter} from 'react-router-dom'
 
-function CreatePost() {
+function CreatePost(props) {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await Axios.post("/create-post", {
+      //storing the response from the server( in a varibale named response or anything) when we sent the server this post req
+      const response = await Axios.post("/create-post", {
         title,
         body,
+        // token is given to us by the server to make sure that no malacious user can  sign.
         token: localStorage.getItem("reactAppToken"),
-        // token is given to us by the server to make sure that no malacious user can use this.
+        
+        
       });
+      console.log(`this is the response:`, response.data)
+      // to redirect the user to new screen/webpage/URL after posting the data
+// to work with react router history we use a tool called "withRouter"
+//here we are redirecting our App to the url of the newly created post based on it's unique id as response.data is the unique id server sends us
+      props.history.push(`/post/${response.data}`)
+
+
       console.log("new post created");
     } catch (e) {
       console.log("There was a problem with this post");
@@ -59,6 +70,6 @@ function CreatePost() {
   );
 }
 
-export default CreatePost;
-
+export default withRouter(CreatePost);
+// withRouter will pass updated match, location, and history props to the wrapped component(CreatePost here) whenever it renders.
 // to submit form we give it an attribute of onSubmit which equals a function say handleSubmit

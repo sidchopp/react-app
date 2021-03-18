@@ -10,8 +10,10 @@ import Footer from "./components/Footer"
 import About from "./components/About"
 import Terms from "./components/Terms"
 import CreatePost from './components/CreatePost'
+import ViewSinglePost from './components/ViewSinglePost'
 
 import Axios from 'axios'
+
 // set default url for all axios request. SO now this url will be the beginning potion for all requests to axios
 Axios.defaults.baseURL = 'http://localhost:8080'
 
@@ -31,6 +33,9 @@ function App() {
         </Route>
         <Route path="/create-post" exact >
           <CreatePost />
+        </Route>
+        <Route path="/post/:id" exact >
+          <ViewSinglePost />
         </Route>
         <Route path="/about-us" exact>  <About /> </Route>
         <Route path="/terms" exact>  <Terms /> </Route>
