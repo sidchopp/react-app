@@ -11,9 +11,9 @@ import About from "./components/About"
 import Terms from "./components/Terms"
 import CreatePost from './components/CreatePost'
 import ViewSinglePost from './components/ViewSinglePost'
+import FlashMessage from './components/FlashMessage'
 
 import Axios from 'axios'
-
 // set default url for all axios request. SO now this url will be the beginning potion for all requests to axios
 Axios.defaults.baseURL = 'http://localhost:8080'
 
@@ -24,15 +24,21 @@ function App() {
   //If something is stored in local storage of browser, we set the initial value of our state to be true, otherwise false
   //SO now even if we refresh the page after loggin in, our App remembers that we are logged In
   const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("reactAppToken")))
+  const [flashMessages, setFlashMessages] = useState([])
+
+  function addFlashMessage(msg) {
+    setFlashMessages(prev => prev.concat(msg))
+  }
   return (
     <BrowserRouter >
+      <FlashMessage messages={flashMessages} />
       <Menubar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route path="/" exact>
           {loggedIn ? <Home /> : <Mainpage />}
         </Route>
         <Route path="/create-post" exact >
-          <CreatePost />
+          <CreatePost addFlashMessage={addFlashMessage} />
         </Route>
         <Route path="/post/:id" exact >
           <ViewSinglePost />

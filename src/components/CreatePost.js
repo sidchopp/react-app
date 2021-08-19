@@ -16,15 +16,14 @@ function CreatePost(props) {
         body,
         // token is given to us by the server to make sure that no malacious user can  sign.
         token: localStorage.getItem("reactAppToken"),
-        
-        
       });
-      console.log(`this is the response:`, response.data)
+      console.log(`this is the response:`, response.data);
       // to redirect the user to new screen/webpage/URL after posting the data
-// to work with react router history we use a tool called "withRouter"
-//here we are redirecting our App to the url of the newly created post based on it's unique id as response.data is the unique id server sends us
-      props.history.push(`/post/${response.data}`)
-
+      // to work with react router history we use a tool called "withRouter"
+      //here we are redirecting our App to the url of the newly created post based on it's unique id as response.data is the unique id server sends us
+      // to show flash message after creating a new post
+      props.addFlashMessage("Congrats, your message is posted!");
+      props.history.push(`/post/${response.data}`);
 
       console.log("new post created");
     } catch (e) {
