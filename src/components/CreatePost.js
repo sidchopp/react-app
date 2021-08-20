@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PageTitle from "./PageTitle";
 import Axios from "axios";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 function CreatePost(props) {
   const [title, setTitle] = useState();
